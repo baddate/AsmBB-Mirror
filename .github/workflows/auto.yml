@@ -18,7 +18,7 @@ jobs:
           - name: 'Extract fossil'
             run:  sudo tar zxvf fossil-linux-x64-2.11.1.tar.gz
           - name: 'Get AsmBB'
-            run:  fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
+            run:  ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
           - name: 'Open AsmBB repo'
             uses: ./fossil open asmbb.fossil
           - name: git Actions
