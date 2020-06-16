@@ -20,7 +20,7 @@ jobs:
           - name: 'Get AsmBB'
             run:  fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
           - name: 'Open AsmBB repo'
-            uses: fossil open asmbb.fossil
+            uses: ./fossil open asmbb.fossil
           - name: git Actions
             run: |
                   git add .
