@@ -13,6 +13,8 @@ jobs:
           - name: Checkout
             uses: actions/checkout@v2.3.3
           - name: 'INSTALL FOSSIL'
+            uses: actions/AsmBB-Mirror@v1
+          - name: 'RUN'
             run: |
                 bash ./git.sh
             shell: bash
