@@ -1,1 +1,3 @@
-.fossil\n fossil\n *.gz
+.fossil
+ fossil
+ *.gz
