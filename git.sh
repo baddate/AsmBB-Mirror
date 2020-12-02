@@ -7,7 +7,7 @@ echo -e "========================INSTALL FOSSIL"
 #sudo wget -c https://www.fossil-scm.org/fossil/uv/fossil-src-2.13.tar.gz
 #tar zxvf fossil-src-2.13.tar.gz
 #cd fossil-2.13
-sudo wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
+wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
 tar zxvf fossil-linux-x64-2.13.tar.gz
 echo -e "========================LS"
 ls
@@ -29,7 +29,7 @@ ls -l
 chmod 777 asmbb.fossil
 cd asmbb
 echo -e "========================OPEN FOSSIL"
-sudo /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil open ../asmbb.fossil
+sudo /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil open /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/asmbb.fossil
 
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
