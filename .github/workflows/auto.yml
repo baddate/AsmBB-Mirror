@@ -26,9 +26,8 @@ jobs:
               # cd asmbb
               # ls -l
               # bash ./git.sh
-              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/git.sh -O test.sh
+              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/git.sh
               echo `pwd`
-              chmod a+x ./test.sh
-              bash ./test.sh
-              rm -f test.sh
+              chmod a+x ./git.sh
+              bash ./git.sh
             shell: bash
