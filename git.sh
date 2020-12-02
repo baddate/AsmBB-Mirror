@@ -22,7 +22,7 @@ mkdir asmbb
 
 echo -e `pwd`
 echo -e "========================OPEN FOSSIL"
-echo -e `../`
+echo ../
 ./fossil open ../asmbb.fossil --workdir /asmbb
 # echo -e "========================GIT"
 # git add .
