@@ -8,14 +8,14 @@ echo -e "========================INSTALL FOSSIL"
 #tar zxvf fossil-src-2.13.tar.gz
 #cd fossil-2.13
 wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
-tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log
+tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log.gz
 echo -e "========================LS"
 chmod a+x ./fossil
 ./fossil open https://asm32.info/fossil/repo/asmbb
 ls -l
  echo -e "========================CLONE REPO"
 
-./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log
+./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log.gz
 
  echo -e "========================MKDIR"
 # mkdir asmbb
@@ -30,7 +30,10 @@ ls -l
 echo ".fossil fossil *.gz" > .gitignore
 cat .gitignore
 echo -e "========================LS"
-ls
+ls -a
+git add .
+git commit -m "update"
+git push -f
 # sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
 # ls -l ./asmbb
 # # echo -e "========================MV"
