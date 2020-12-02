@@ -33,7 +33,7 @@ sudo ./fossil open asmbb.fossil --workdir /asmbb
 echo -e `pwd`
 echo `ls`
 echo -e "========================GIT"
-git log
-git add asmbb/*
-git commit -m "update"
-git push
+git status
+# git add asmbb/
+# git commit -m "update"
+# git push
