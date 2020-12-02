@@ -28,8 +28,9 @@ mkdir asmbb
 mv fossil asmbb
 mv asmbb.fossil asmbb
 ls -l
-chmod 777 asmbb.fossil
+
 cd asmbb
+sudo chmod 777 asmbb.fossil
 echo -e "========================OPEN FOSSIL"
 ./fossil open asmbb.fossil
 
