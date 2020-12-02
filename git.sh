@@ -8,14 +8,14 @@ echo -e "========================INSTALL FOSSIL"
 #tar zxvf fossil-src-2.13.tar.gz
 #cd fossil-2.13
 wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
-tar zxvf fossil-linux-x64-2.13.tar.gz
+tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log
 echo -e "========================LS"
 ls
 chmod a+x ./fossil
 
 echo -e "========================CLONE REPO"
 
-sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
+sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil > log
 
 echo -e "========================MKDIR"
 
