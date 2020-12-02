@@ -18,17 +18,10 @@ echo -e "========================CLONE REPO"
 sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log
 
 echo -e "========================MKDIR"
-
-# MY_VAR='/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil'
-# export MY_VAR
-
-export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
-echo $PATH
 mkdir asmbb
 mv fossil asmbb
 mv asmbb.fossil asmbb
-
-
+echo -e "========================CD"
 cd asmbb
 sudo chmod 777 asmbb.fossil
 echo -e "========================OPEN FOSSIL"
@@ -37,10 +30,10 @@ ls -l
 
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
-ls -l asmbb
-echo -e "========================MV"
-sudo mv asmbb/ ../ -f
 ls -l
+# echo -e "========================MV"
+# sudo mv asmbb/ ../ -f
+# ls -l
 echo -e "========================GIT"
 git status
 # git add asmbb/
