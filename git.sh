@@ -26,9 +26,10 @@ export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
 mkdir asmbb
 ls -l
+chmod 777 asmbb.fossil
 cd asmbb
 echo -e "========================OPEN FOSSIL"
-sudo ../fossil open ../asmbb.fossil
+sudo /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil open ../asmbb.fossil
 
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
