@@ -3,7 +3,10 @@ echo -e "========================CONFIG GIT"
 git config --global user.name "baddate"
 git config --global user.email "badgatex@outlook.com"
 echo -e "========================INSTALL FOSSIL"
-sudo apt install fossil
+sudo wget -c https://www.fossil-scm.org/home/uv/fossil-linux-x64-2.14-preview-20201125.tar.gz
+tar zxvf fossil-linux-x64-2.14-preview-20201125.tar.gz /fos
+cd fos
+chmod +x fossil
 
 echo -e "========================CLONE REPO"
 fossil help
