@@ -7,6 +7,7 @@
   [equ:tViews=[case:[ReadCount]|views|view|views]]
   [equ:Posters=Participants: ]
   [equ:Invited=Invited: ]
+  [equ:Rating=Rating]
 |
   [equ:ttlPinned=Забодена отгоре]
   [equ:ttlLimited=Тема с ограничен достъп]
@@ -16,6 +17,7 @@
   [equ:tViews=преглед[case:[ReadCount]|а||а]]
   [equ:Posters=Участници: ]
   [equ:Invited=Поканени: ]
+  [equ:Rating=Рейтинг]
 |
   [equ:ttlPinned=Прикрепленная на верху]
   [equ:ttlLimited=Тема ограниченным доступом]
@@ -25,6 +27,7 @@
   [equ:tViews=просмотр[case:[ReadCount]|ов||ов]]
   [equ:Posters=Участники: ]
   [equ:Invited=Приглашенные: ]
+  [equ:Rating=Рейтинг]
 |
   [equ:ttlPinned=Sujet épinglé]
   [equ:ttlLimited=Sujet à accès limité]
@@ -34,6 +37,7 @@
   [equ:tViews=vue[case:[ReadCount]|s||s]]
   [equ:Posters=Participants: ]
   [equ:Invited=Invités: ]
+  [equ:Rating=Évaluation]
 |
   [equ:ttlPinned=Angeheftetes Thema]
   [equ:ttlLimited=Beschränktes Thema]
@@ -43,12 +47,13 @@
   [equ:tViews=[case:[ReadCount]|Ansichten|Ansicht|Ansichten]]
   [equ:Posters=Teilnehmer: ]
   [equ:Invited=Eingeladen: ]
+  [equ:Rating=Bewertung]
 ]
 
 <div class="thread_summary">
       [case:[Pinned]||<img class="pinned" src="[special:skin]/_images/pinned.png" alt="!" title="[const:ttlPinned]">]
       [case:[limited]||<img height="32" width="32" class="unread" src="[special:skin]/_images/limited.svg" alt="#" title="[const:ttlLimited]">]
-      [case:[Unread]||<a href="[FirstUnread]/!by_id">]<img height="32" width="32" class="unread" src="[special:skin]/_images/posts[case:[Unread]|_gray|].svg" alt="[case:[Unread]||&gt;]" title="[const:ttlUnread]">[case:[Unread]||</a>]
+      [case:[Unread]||<a href="[Slug]/!unread">]<img height="32" width="32" class="unread" src="[special:skin]/_images/posts[case:[Unread]|_gray|].svg" alt="[case:[Unread]||&gt;]" title="[const:ttlUnread]">[case:[Unread]||</a>]
   <div class="thread_link">
     <a class="thread_link" href="[Slug]/">[Caption]</a><br>
     <label><input type="checkbox" class="collapseit"><ul class="small comma posters">[const:Posters][html:[Posters]]</ul></label>
@@ -61,6 +66,7 @@
     <span class="small">[TimeChanged]</span>
   </div>
   <div class="col_cnt">
-    [ReadCount]<br>[const:tViews]
+    [ReadCount] [const:tViews]<br>
+    [const:Rating]: <span id="thread_rating[id]">[Rating]</span>
   </div>
 </div>

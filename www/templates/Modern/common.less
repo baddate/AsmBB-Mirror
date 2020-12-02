@@ -245,7 +245,8 @@ span.ntf {
   }
 
   h1 {
-    font-variant: small-caps;
+//    font-variant: small-caps;
+    margin: auto;
     font-weight: bold;
     font-size: 48px;
     line-height: 48px;
@@ -546,13 +547,14 @@ input^[type=checkbox^] {
 
   &>svg>* {
     fill: @clButtonFG;
+    stroke: @clButtonFG;
   }
 
   &:active {
     background-image: linear-gradient(white, @clButtonActiveBG) !important;
   }
 
-  &:hover, &:focus  {
+  &:hover  {
     background-color: @clButtonActiveBG;
     background-image: linear-gradient(@clButtonActiveBG, white);
     color: @clButtonActiveFG;
@@ -560,7 +562,11 @@ input^[type=checkbox^] {
     text-decoration: none;
     &>svg>* {
       fill: @clButtonActiveFG;
+      stroke: @clButtonActiveFG;
     }
+  }
+  &:focus {
+    outline: 1px dotted @clButtonBG;
   }
 }
 

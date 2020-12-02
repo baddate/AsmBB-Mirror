@@ -36,7 +36,8 @@ PHashTable tableRenderCmd, tpl_func,                      \
         'css:',         RenderTemplate.cmd_css,           \   ; No output, no encoding.
         'equ:',         RenderTemplate.cmd_equ,           \
         'const:',       RenderTemplate.cmd_const,         \
-        'enc:',         RenderTemplate.cmd_encode             ; encode the content in html encoding.
+        'enc:',         RenderTemplate.cmd_encode,        \   ; encode the content in html encoding.
+        'usr:',         RenderTemplate.cmd_user_encode    \   ; encodes the unicode content of the user nickname for unicode-clones distinction.
 
 PHashTable tableSpecial, tpl_func,                              \
         "visitors",    RenderTemplate.sp_visitors,              \ ; HTML no encoding
@@ -71,6 +72,7 @@ PHashTable tableSpecial, tpl_func,                              \
         "candel",      RenderTemplate.sp_candelete,             \ ; 1/0 no encoding
         "canchat",     RenderTemplate.sp_canchat,               \ ; 1/0 no encoding
         "canupload",   RenderTemplate.sp_canupload,             \ ; 1/0 no encoding
+        "canvote",     RenderTemplate.sp_canvote,               \ ; 1/0 no encoding
         "referer",     RenderTemplate.sp_referer,               \ ; 1/0 no encoding
         "unreadLAT",   RenderTemplate.sp_unreadLAT,             \
         "unread",      RenderTemplate.sp_unread,                \
@@ -124,22 +126,6 @@ begin
 
         BenchmarkStart .render2
 
-        xor     eax, eax
-
-        lea     edi, [.tblFields]
-        mov     ecx, 256 * sizeof.TFieldSlot / 4
-        rep stosd
-
-        lea     edi, [.tblConst]
-        mov     ecx, 256 * sizeof.TConstSlot / 4
-        rep stosd
-
-        cmp     [.sqlite_statement], eax
-        je      .hash_ok
-
-        call    .build_hash_table       ; creates a hash table for the SQL statement field names.
-
-.hash_ok:
         mov     [.fEncode], 1
 
         mov     edx, [.pText]
@@ -183,9 +169,10 @@ begin
         stdcall FileOpenAccess, ebx, faReadOnly
         stdcall StrDel, ebx
         mov     ebx, eax
-        jc      .exit
+        jc      .exit                   ; missing file.
 
         stdcall FileSize, ebx
+
         push    eax
         stdcall TextSetGapSize, edx, eax
 
@@ -198,7 +185,25 @@ begin
 
         stdcall FileClose, ebx
 
+
 .start_render:
+
+        xor     eax, eax
+
+        lea     edi, [.tblFields]
+        mov     ecx, 256 * sizeof.TFieldSlot / 4
+        rep stosd
+
+        lea     edi, [.tblConst]
+        mov     ecx, 256 * sizeof.TConstSlot / 4
+        rep stosd
+
+        cmp     [.sqlite_statement], eax
+        je      .hash_ok
+
+        call    .build_hash_table       ; creates a hash table for the SQL statement field names.
+
+.hash_ok:
         or      eax, -1
         push    eax
 
@@ -538,6 +543,8 @@ begin
         je      .char_quote
         cmp     al, '&'
         je      .char_amp
+        cmp     al, '|'
+        je      .char_vert
 
         stosb
         inc     ebx
@@ -552,6 +559,13 @@ begin
         add     [edx+TText.GapBegin], ebx
 
         jmp     .loop
+
+.char_vert:
+        mov     dword [edi], '&ver'
+        mov     word [edi+4], 't;'
+        add     edi, 6
+        add     ebx, 6
+        jmp     .next_encode
 
 
 .char_less_than:
@@ -753,8 +767,6 @@ endl
         mov     esi, [edx+TText.GapEnd]
         mov     edi, [edx+TText.GapBegin]
 
-        lea     eax, [edx+esi]
-
 .enc_loop:
         cmp     esi, ebx
         jae     .end_scan
@@ -770,6 +782,8 @@ endl
         je      .enc_quote
         cmp     al, '&'
         je      .enc_amp
+        cmp     al, '|'
+        je      .enc_vert
 
         mov     [edx+edi], al
         inc     edi
@@ -803,6 +817,13 @@ endl
         add     edi, 5
         jmp     .enc_loop
 
+.enc_vert:
+        call    .space_for_enc
+        mov     dword [edx+edi], '&ver'
+        mov     word  [edx+edi+4], 't;'
+        add     edi, 6
+        jmp     .enc_loop
+
 .end_scan:
         mov     [edx+TText.GapEnd], esi
         mov     [edx+TText.GapBegin], edi
@@ -826,6 +847,70 @@ endl
         sub     ebx, [edx+TText.GapBegin]
         mov     esi, [edx+TText.GapEnd]
         retn
+
+; ...................................................................
+
+.cmd_user_encode:
+; here esi points to ":" of the "usr:" command. edi points to the start "[" and ecx points to the end "]"
+        pushad
+
+        stdcall TextMoveGap, edx, ecx
+        inc     [edx+TText.GapEnd]              ; delete the end "]"
+        mov     ebx, [edx+TText.GapEnd]         ; where to stop scanning
+
+        stdcall TextMoveGap, edx, edi
+        add     [edx+TText.GapEnd], 5           ; delete "[usr:"
+
+        mov     esi, [edx+TText.GapEnd]
+        mov     edi, [edx+TText.GapBegin]
+
+        cmp     esi, ebx
+        jae     .finish_usr_scan
+
+        mov     al, [edx+esi]
+        inc     esi
+        mov     [edx+edi], al
+        inc     edi
+
+        mov     ecx, '<u >'
+
+.usr_loop:
+        cmp     esi, ebx
+        jae     .end_usr_scan
+
+        mov     ah, al
+        mov     al, [edx+esi]
+        inc     esi
+
+        xor     ah, al
+        jns     .tag_ok
+
+        call    .space_for_enc
+        mov     dword [edx+edi], ecx
+        add     edi, 4
+        xor     ecx, '<u >' xor '</u>' ; turns "<u >" into "</u>" and vice versa
+
+.tag_ok :
+        mov     [edx+edi], al
+        inc     edi
+        jmp     .usr_loop
+
+.end_usr_scan:
+        cmp     ch, '/'
+        jne     .finish_usr_scan
+
+        call    .space_for_enc
+        mov     dword [edx+edi], ecx
+        add     edi, 4
+
+.finish_usr_scan:
+        mov     [edx+TText.GapEnd], esi
+        mov     [edx+TText.GapBegin], edi
+        mov     [esp+4*regEDX], edx
+        popad
+
+        mov     ecx, [edx+TText.GapBegin]
+        jmp     .loop_dec
 
 ; ...................................................................
 
@@ -1609,6 +1694,10 @@ endl
 
 .sp_canupload:
         mov     eax, permAttach
+        jmp     .one_permission
+
+.sp_canvote:
+        mov     eax, permVote or permAdmin
         jmp     .one_permission
 
 .sp_canchat:
@@ -3318,3 +3407,4 @@ begin
         pop     edi esi edx ecx ebx
         return
 endp
+

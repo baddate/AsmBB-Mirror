@@ -28,7 +28,7 @@ begin
 
 .read_ok:
         stdcall LogUserActivity, esi, uaThreadList, 0
-        stdcall AddActivitySimple, cActivityList, esi
+        stdcall AddActivitySimple, cActivityList, atBrowsing, esi
 
 ; make the title
 
@@ -53,7 +53,9 @@ begin
         stdcall StrDel, eax
 
 .page_ok:
-        stdcall TextCat, edi, <txt '<div class="threads_list">', 13, 10>
+        stdcall RenderTemplate, edi, "threadlist.js", 0, esi   ; navigation tool bar
+
+        stdcall TextCat, eax, <txt '<div class="threads_list">', 13, 10>
         stdcall RenderTemplate, edx, "nav_list.tpl", 0, esi   ; navigation tool bar
         mov     edi, eax
 
@@ -120,8 +122,6 @@ begin
 
         cinvoke sqliteBindInt, [.stmt], 3, [esi+TSpecialParams.userID]
 
-        xor     ebx, ebx
-
         cmp     [esi+TSpecialParams.dir], 0
         je      .dir_ok
 
@@ -135,8 +135,6 @@ begin
         cmp     eax, SQLITE_ROW
         jne     .finish
 
-        inc     ebx                     ; post count
-
         stdcall RenderTemplate, edi, "thread_info.tpl", [.stmt], esi
         mov     edi, eax
         jmp     .loop
@@ -145,14 +143,10 @@ begin
         stdcall TextCat, edi, <txt "</div>", 13, 10>   ; div.multi_content
         mov     edi, edx
 
-        cmp     ebx, 5
-        jbe     .back_navigation_ok
-
         stdcall TextCat, edi, [.list]
         stdcall RenderTemplate, edx, "nav_list.tpl", 0, esi
         mov     edi, eax
 
-.back_navigation_ok:
         stdcall TextCat, edi, <txt "</div>", 13, 10>   ; div.threads_list
         mov     edi, edx
 

@@ -37,13 +37,14 @@ html {
 }
 
 body {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+
+  margin: 0;
+  min-height: 100vh;
+
   background-color: @clLightGray;
   color: @clBlack;
-  padding: 0;
-  margin: 0;
-  min-height: 100vh; //~"calc( 100vh - 12px)";
-  display: flex;
-  flex-direction: column;
 }
 
 body.limited {
@@ -100,7 +101,7 @@ svg {
 .btn {
   display: inline-flex;
   align-items: center;
-  vertical-align: middle;
+  justify-content: center;
 
   border: none;
   text-decoration: none;
@@ -108,6 +109,7 @@ svg {
   padding: 0 @margin;
   margin: @margin/2;
   height: @buttonHeight;
+  min-width: @buttonHeight;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -278,7 +280,7 @@ select {
 }
 
 
-input^[type=text^], input^[type=search^], input^[type=email^], input^[type=password^] {
+input^[type=text^], input^[type=search^], input^[type=email^], input^[type=password^], input^[type=number^] {
   background-color: @clWhite;
   color: @clBlack;
   padding: 4px 8px;
@@ -289,7 +291,7 @@ input^[type=text^], input^[type=search^], input^[type=email^], input^[type=passw
 }
 
 
-input^[type=text^], input^[type=email^], input^[type=password^], select, textarea {
+input^[type=text^], input^[type=email^], input^[type=password^], input^[type=number^], select, textarea {
   border: 1px solid @clGray;
   &:focus {
     border: 1px solid @clYellow;
@@ -492,14 +494,17 @@ a.current_tag {
     cursor: pointer;
 
     &::before {
-      content: '';
+      content: 'X';
       width: 12px;
       height: 12px;
+      line-height: 12px;
       display: inline-block;
+
+      color: @clWhite;
       background-color: @clWhite;
+
       border: 1px solid @clGray;
       margin-right: @margin/2;
-      vertical-align: middle;
     }
   }
 }
@@ -661,13 +666,14 @@ a.page_link:extend(.btn all) {
   background-color: @clYellow;
   color: @clBlack;
   border-radius: 50vh;
+  padding: 0 @margin/2;
 }
 
 
 span.current_page {
   background-color: @clRed;
   color: @clWhite;
-  padding: 0px @margin/2;
+  padding: 0 @margin/2;
   text-align: center;
   min-width: @buttonHeight;
   height: @buttonHeight;
@@ -692,9 +698,22 @@ body > footer {
 
   font-size: 0.9 * @FontSize;
   clear: both;
+  height: auto;
 
   p {
     margin: 4px 0px 0px 0px;
+    a.user {
+      font-family: @FontMonospace;
+      font-weight: bold;
+      u {
+        color: @clRed;
+        min-width: 2ch;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 2px dotted @clRed;
+      }
+    }
   }
 
   a {

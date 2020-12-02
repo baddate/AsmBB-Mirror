@@ -39,8 +39,9 @@ options.Benchmark = 0
 include "%lib%/freshlib.asm"
 
 EMOTICONS_PATH equ '/~/_images/emoticons/'      ; defines the emoticons path for the bbcode translator.
-include "%lib%/data/bbcode.asm"
+HTML_IMG_ATTR equ ' '                           ; HTML_IMG_ATTR equ ' crossorigin="anonymous" ' - notice the spaces!
 
+include "%lib%/data/bbcode.asm"
 include "%lib%/data/minimag.asm"
 
 include "benchmark.asm"
@@ -76,6 +77,7 @@ include "images_png.asm"
 include "categories.asm"
 include "history.asm"
 include "encryption.asm"
+include "votes.asm"
 
 include "chat.asm"
 
@@ -549,6 +551,7 @@ begin
         pushad
         cinvoke sqliteBusyTimeout, [hMainDatabase], 5000
         cinvoke sqliteExec, [hMainDatabase], "PRAGMA foreign_keys = TRUE", 0, 0, 0
+        cinvoke sqliteExec, [hMainDatabase], "PRAGMA recursive_triggers = TRUE", 0, 0, 0
         cinvoke sqliteExec, [hMainDatabase], "PRAGMA threads = 2", 0, 0, 0
         cinvoke sqliteExec, [hMainDatabase], "PRAGMA secure_delete = FALSE", 0, 0, 0
         cinvoke sqliteExec, [hMainDatabase], "PRAGMA journal_mode = WAL", 0, 0, 0

@@ -366,7 +366,7 @@ begin
         xchg    ecx, [esi+TSpecialParams.userName]
         xchg    edx, [esi+TSpecialParams.userID]
 
-        stdcall AddActivitySimple, cActivityLogin, esi
+        stdcall AddActivitySimple, cActivityLogin, atEnter, esi
 
         xchg    edx, [esi+TSpecialParams.userID]
         xchg    ecx, [esi+TSpecialParams.userName]
@@ -429,7 +429,7 @@ begin
         stdcall TextCat, edi, <"Set-Cookie: sid=; HttpOnly; Path=/; Max-Age=0", 13, 10>
         mov     edi, edx
 
-        stdcall AddActivitySimple, cActivityLogout, esi
+        stdcall AddActivitySimple, cActivityLogout, atLeave, esi
 
 .finish:
         stdcall GetBackLink, esi
@@ -550,7 +550,7 @@ begin
         jnc     .error_short_name         ; the name contains special characters actually!
 
         stdcall StrLen, eax
-        cmp     eax, 3
+        cmp     eax, 2
         jbe     .error_short_name
 
         cmp     eax, 256

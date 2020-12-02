@@ -13,6 +13,8 @@
   [equ:btnPreview=Preview]
   [equ:btnSubmit=Submit]
   [equ:btnRevert=Revert]
+  [equ:hintPreview=Ctrl+Enter for preview]
+  [equ:hintSubmit=Ctrl+S for submit]
 |
   [equ:btnNewPost=Отговор]
   [equ:ttlPost=Съобщение]
@@ -22,6 +24,8 @@
   [equ:btnPreview=Преглед]
   [equ:btnSubmit=Запис]
   [equ:btnRevert=Отказ]
+  [equ:hintPreview=Ctrl+Enter за преглед]
+  [equ:hintSubmit=Ctrl+S за публикуване]
 |
   [equ:btnNewPost=Ответить]
   [equ:ttlPost=Текст сообщения]
@@ -31,6 +35,8 @@
   [equ:btnPreview=Преглед]
   [equ:btnSubmit=Записать]
   [equ:btnRevert=Отказ]
+  [equ:hintPreview=Ctrl+Enter для предварительного просмотра]
+  [equ:hintSubmit=Ctrl+S чтобы отправить]
 |
   [equ:btnNewPost=Répondre]
   [equ:ttlPost=Contenu du message]
@@ -40,6 +46,8 @@
   [equ:btnPreview=Prévisualiser]
   [equ:btnSubmit=Poster]
   [equ:btnRevert=Annuler]
+  [equ:hintPreview=Ctrl+Entrée pour prévisualiser]
+  [equ:hintSubmit=Ctrl+S pour soumettre]
 |
   [equ:btnNewPost=Antworten]
   [equ:ttlPost=Inhalt des Beitrags]
@@ -49,6 +57,8 @@
   [equ:btnPreview=Vorschau]
   [equ:btnSubmit=Absenden]
   [equ:btnRevert=Zurücksetzen]
+  [equ:hintPreview=Strg+Eingabe für eine Vorschau]
+  [equ:hintSubmit=Strg+S zum Absenden]
 ]
 
 <div id="editor-window" class="editor">
@@ -57,7 +67,7 @@
       <input form="editform" class="btn" formaction="!post#preview" id="preview-btn" type="submit" name="preview" onclick="this.form.cmd='preview'" value="[const:btnPreview]" title="[const:hintPreview]">
       <input form="editform" class="btn" type="submit" name="submit" onclick="this.form.cmd='submit'" value="[const:btnSubmit]" title="[const:hintSubmit]">
       <div class="spacer"></div>
-      <a class="btn img-btn" href=".">
+      <a class="btn img-btn" href="[case:[special:page]|./|!by_id]">
         <svg version="1.1" width="12" height="12" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
            <rect transform="rotate(45)" x=".635" y="-1.53" width="21.4" height="3.05" rx="1.53" ry="1.53"/>
            <rect transform="rotate(135)" x="-10.7" y="-12.8" width="21.4" height="3.05" rx="1.53" ry="1.53"/>
