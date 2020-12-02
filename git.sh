@@ -40,13 +40,15 @@ elif [ ! -f "log.gz" ]; then
 rm -f log.gz
 elif [ ! -f "tar.log.gz" ]; then
 rm -f tar.log.gz
+else
+echo "===========NONE======="
 fi
 
 cat .gitignore
 echo -e "========================LS"
 ls -a
 git add .
-git commit -m "update"
+git commit -m "update on `date`"
 git push -f
 # sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
 # ls -l ./asmbb
