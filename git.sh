@@ -30,7 +30,7 @@ mv asmbb.fossil asmbb
 ls -l
 
 cd asmbb
-sudo chmod 777 asmbb.fossil
+# sudo chmod 777 asmbb.fossil
 echo -e "========================OPEN FOSSIL"
 ./fossil open asmbb.fossil
 
