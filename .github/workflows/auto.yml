@@ -16,13 +16,14 @@ jobs:
             run: |
               # wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz 1> wget.log
               # tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log
-              # echo -e "========================LS"
               # chmod a+x ./fossil
               sudo apt install fossil
               mkdir asmbb
-              fossil help clone
-              fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
+              # fossil help clone
+              # fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
               # cd asmbb
-              fossil open ../asmbb.fossil
-              bash ./git.sh
+              fossil open https://asm32.info/fossil/repo/asmbb --repodir asmbb
+              cd asmbb
+              
+              # bash ./git.sh
             shell: bash
