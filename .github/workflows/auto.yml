@@ -23,6 +23,7 @@ jobs:
               fossil help clone
               fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
               cd asmbb
+              echo "DIR"
               fossil open ../asmbb.fossil
-              echo `ls`
+              echo "END"
             shell: bash
