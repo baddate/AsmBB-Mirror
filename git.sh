@@ -26,7 +26,7 @@ ls
 # sudo chmod 777 asmbb.fossil
 echo -e "========================OPEN FOSSIL"
 ls -l
-./fossil open asmbb.fossil --wordir ./asmbb
+./fossil open asmbb.fossil --workdir ./asmbb
 
 echo -e "========================LS"
 # sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
