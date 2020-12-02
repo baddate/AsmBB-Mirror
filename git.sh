@@ -31,14 +31,13 @@ echo -e ".fossil\n fossil\n *.gz" > .gitignore
 file="fossil"
 
 
-
-if [ ! -f "fossil" ]; then
+if [ ! -e "fossil" ]; then
 rm -f fossil
-elif [ ! -f "fossil-linux-x64-2.13.tar.gz" ]; then
+elif [ ! -e "fossil-linux-x64-2.13.tar.gz" ]; then
 rm -f fossil-linux-x64-2.13.tar.gz
-elif [ ! -f "log.gz" ]; then
+elif [ ! -e "log.gz" ]; then
 rm -f log.gz
-elif [ ! -f "tar.log.gz" ]; then
+elif [ ! -e "tar.log.gz" ]; then
 rm -f tar.log.gz
 else
 echo "===========NONE======="
