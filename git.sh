@@ -28,7 +28,7 @@ echo -e "========================OPEN FOSSIL"
 export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
 mkdir asmbb
-sudo ./fossil open ../asmbb.fossil --workdir /asmbb
+sudo ./fossil open asmbb.fossil --workdir /asmbb
 # echo -e "========================GIT"
 # git add .
 # git commit -m "update"
