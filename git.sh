@@ -25,9 +25,11 @@ echo -e "========================MKDIR"
 export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
 mkdir asmbb
+mv fossil asmbb
+mv asmbb.fossil asmbb
 ls -l
 chmod 777 asmbb.fossil
-
+cd asmbb
 echo -e "========================OPEN FOSSIL"
 ./fossil open asmbb.fossil
 
