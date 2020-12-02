@@ -11,18 +11,18 @@ sudo wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
 tar zxvf fossil-linux-x64-2.13.tar.gz
 echo -e "========================LS"
 ls
-chmod a+x fossil
+chmod a+x ./fossil
 
 echo -e "========================CLONE REPO"
 
-sudo fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
+sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
 
 echo -e "========================MKDIR"
 mkdir asmbb
 cd asmbb
 echo -e `pwd`
 echo -e "========================OPEN FOSSIL"
-fossil open ../asmbb.fossil
+./fossil open ../asmbb.fossil
 
 git add .
 git commit -m "update"
