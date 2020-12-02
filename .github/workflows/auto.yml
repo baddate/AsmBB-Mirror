@@ -9,7 +9,8 @@ jobs:
        Todo_bot:
         runs-on: ubuntu-latest
         steps:
-
+          - name: 'Checkout'
+            uses: actions/checkout@v2
           - name: 'Get fossil'
             run:  sudo wget -c https://www.fossil-scm.org/index.html/uv/fossil-linux-x64-2.11.1.tar.gz
           - name: 'Extract fossil'
@@ -22,12 +23,9 @@ jobs:
                   cd asmbb
           - name: 'Open AsmBB repo'
             run: ./fossil open asmbb.fossil
-          - name: 'Checkout'
-            uses: actions/checkout@v2
+
             run: |
                   git add .
                   git commit -m "update"
                   git push origin master
-            with:
-              repo-token: ${{ secrets.GITHUB_TOKEN }}
 
