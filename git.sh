@@ -15,7 +15,7 @@ chmod a+x ./fossil
 
 echo -e "========================CLONE REPO"
 
-sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil > log
+sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log
 
 echo -e "========================MKDIR"
 
@@ -27,12 +27,13 @@ echo $PATH
 mkdir asmbb
 mv fossil asmbb
 mv asmbb.fossil asmbb
-ls -l
+
 
 cd asmbb
 sudo chmod 777 asmbb.fossil
 echo -e "========================OPEN FOSSIL"
-./fossil open asmbb.fossil -f
+ls -l
+./fossil open asmbb.fossil
 
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
