@@ -33,14 +33,19 @@ f2="fossil-linux-x64-2.13.tar.gz"
 f3="log.gz"
 f4="tar.log.gz"
 
-if [ ! -e $f1 ]; then
-rm -f fossil
-elif [ ! -e $f2 ]; then
-rm -f fossil-linux-x64-2.13.tar.gz
-elif [ ! -e $f3 ]; then
-rm -f log.gz
-elif [ ! -e $f4 ]; then
-rm -f tar.log.gz
+if [ ! -e $f1 ]
+then
+rm -f $f1
+ls
+elif [ ! -e $f2 ]
+then
+rm -f $f2
+elif [ ! -e $f3 ]
+then
+rm -f $f3
+elif [ ! -e $f4 ]
+then
+rm -f $f4
 else
 echo "===========NONE======="
 fi
