@@ -23,14 +23,14 @@ echo -e "========================MKDIR"
 # export MY_VAR
 
 
-echo -e "========================OPEN FOSSIL"
+
 
 export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
 mkdir asmbb
-sudo ./fossil open asmbb.fossil --workdir /asmbb
+echo -e "========================OPEN FOSSIL"
+sudo ./fossil open asmbb.fossil
 
-echo -e `pwd`
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
 ls -l asmbb
