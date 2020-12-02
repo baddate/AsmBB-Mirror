@@ -31,7 +31,7 @@ mkdir asmbb
 ls -l
 echo -e "========================OPEN FOSSIL"
 
-sudo ./fossil open asmbb.fossil -f
+sudo ./fossil open asmbb.fossil --workdir asmbb
 
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
