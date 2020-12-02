@@ -6,7 +6,8 @@ on:
             - dev
 
 jobs:
-       Todo_bot:
+        auto_deploy:
+        name: Auto Deploy
         runs-on: ubuntu-latest
         steps:
           - name: 'Checkout'
@@ -14,7 +15,7 @@ jobs:
           - name: 'Get fossil'
             run:  sudo wget -c https://www.fossil-scm.org/index.html/uv/fossil-linux-x64-2.11.1.tar.gz
           - name: 'Extract fossil'
-            run:  sudo tar zxvf fossil-linux-x64-2.11.1.tar.gz
+            run:  sudo tar zxvf fossil-linux-x64-2.11.1.tar.gz /fossil -C fossil
           - name: 'Get AsmBB'
             run:  ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
           - name: Actions
@@ -27,5 +28,5 @@ jobs:
             run: |
                   git add .
                   git commit -m "update"
-                  git push origin master
+                  git push origin master -f
 
