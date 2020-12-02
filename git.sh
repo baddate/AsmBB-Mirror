@@ -33,9 +33,9 @@ sudo ./fossil open asmbb.fossil --workdir /asmbb
 echo -e `pwd`
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
-echo `ls -l`
+ls -l
 echo -e "========================MV"
-sudo mv asmbb/ . -f
+sudo mv asmbb/ ../ -f
 echo -e "========================GIT"
 git status
 # git add asmbb/
