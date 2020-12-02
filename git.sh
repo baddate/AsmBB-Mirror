@@ -6,6 +6,7 @@ echo -e "========================INSTALL FOSSIL"
 sudo apt install fossil
 
 echo -e "========================CLONE REPO"
+fossil help
 fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
 
 echo -e "========================MKDIR"
