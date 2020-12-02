@@ -28,7 +28,9 @@ echo -e "========================MKDIR"
 export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
 mkdir asmbb
+ls -l
 echo -e "========================OPEN FOSSIL"
+
 sudo ./fossil open asmbb.fossil -f
 
 echo -e "========================LS"
