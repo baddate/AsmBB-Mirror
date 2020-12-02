@@ -12,7 +12,7 @@ tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log
 echo -e "========================LS"
 chmod a+x ./fossil
 ./fossil open https://asm32.info/fossil/repo/asmbb
-ls
+ls -l
  echo -e "========================CLONE REPO"
 
 ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log
@@ -27,10 +27,12 @@ ls
 echo -e "========================OPEN FOSSIL"
 ls -l
 # ./fossil open asmbb.fossil --workdir ./asmbb
-
+echo ".fossil fossil *.gz" > .gitignore
+cat .gitignore
 echo -e "========================LS"
+ls
 # sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
-ls -l ./asmbb
+# ls -l ./asmbb
 # # echo -e "========================MV"
 # # sudo mv asmbb/ ../ -f
 # # ls -l
