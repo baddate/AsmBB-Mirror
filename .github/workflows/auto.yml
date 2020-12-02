@@ -11,13 +11,15 @@ jobs:
         steps:
           - name: 'Checkout'
             uses: actions/checkout@v2
+          - name: 'git user'
+            uses: fregante/setup-git-user@v1
             run: |
-            git config --global user.email "badgatex@outlook.com"
-            git config --global user.name "baddate"
-            echo "hi" > test.md
-            git add .
-            git commit --message 'test actions'
-            git push
+              git config --global user.email "badgatex@outlook.com"
+              git config --global user.name "baddate"
+              echo "hi" > test.md
+              git add .
+              git commit --message 'test actions'
+              git push
           # - name: 'Get fossil'
           #   run:  sudo wget -c https://www.fossil-scm.org/index.html/uv/fossil-linux-x64-2.11.1.tar.gz
           # - name: 'Extract fossil'
