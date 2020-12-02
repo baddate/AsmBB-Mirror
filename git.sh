@@ -32,11 +32,13 @@ f1="fossil"
 f2="fossil-linux-x64-2.13.tar.gz"
 f3="log.gz"
 f4="tar.log.gz"
-
+f5="asmbb.fossil"
+echo "============="
+echo $f1
+echo "============="
 if [  -e $f1 ]
 then
 rm -f $f1
-ls
 elif [  -e $f2 ]
 then
 rm -f $f2
@@ -46,6 +48,9 @@ rm -f $f3
 elif [  -e $f4 ]
 then
 rm -f $f4
+elif [  -e $f5 ]
+then
+rm -f $f5
 else
 echo "===========NONE======="
 fi
@@ -53,6 +58,7 @@ fi
 cat .gitignore
 echo -e "========================LS"
 ls -a
+echo -e "========================GIT"
 git add .
 git commit -m "update on `date`"
 git push -f
