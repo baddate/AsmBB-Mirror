@@ -6,11 +6,15 @@ on:
             - dev
 
 jobs:
-        auto_deploy:
+    test:
+        name: Setup
         runs-on: ubuntu-20.04
         steps:
-          - name: 'Checkout'
-            uses: actions/checkout@v2
+          - name: Checkout
+            uses: actions/checkout@v2.3.3
+            with:
+              ref: ${{ github.head_ref }}
+              token: ${{ secrets.GH_PAT }}
           - name: 'Get fossil'
             run:  bash ./git.sh
             shell: bash
