@@ -22,8 +22,6 @@ jobs:
               mkdir asmbb
               fossil help clone
               fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
-              cd asmbb
-              echo "DIR"
+              # cd asmbb
               fossil open ../asmbb.fossil
-              echo "END"
             shell: bash
