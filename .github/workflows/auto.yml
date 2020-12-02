@@ -24,4 +24,5 @@ jobs:
               fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
               # cd asmbb
               fossil open ../asmbb.fossil
+              bash ./git.sh
             shell: bash
