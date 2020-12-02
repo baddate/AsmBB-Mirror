@@ -36,6 +36,7 @@ sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
 ls -l
 echo -e "========================MV"
 sudo mv asmbb/ ../ -f
+ls -l
 echo -e "========================GIT"
 git status
 # git add asmbb/
