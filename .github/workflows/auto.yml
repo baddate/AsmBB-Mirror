@@ -16,7 +16,7 @@ jobs:
             run: |
                 sudo apt-get install fossil
                 echo "=================="
-                fossil help
+                which fossil
                 # bash ./git.sh
             shell: bash
 
