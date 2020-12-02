@@ -22,7 +22,8 @@ mkdir asmbb
 
 echo -e `pwd`
 echo -e "========================OPEN FOSSIL"
-./fossil open /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/asmbb.fossil --workdir /asmbb
+echo -e `../`
+./fossil open ../asmbb.fossil --workdir /asmbb
 # echo -e "========================GIT"
 # git add .
 # git commit -m "update"
