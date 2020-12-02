@@ -13,20 +13,6 @@ jobs:
           - name: 'Checkout'
             uses: actions/checkout@v2
           - name: 'Get fossil'
-            run:  sudo wget -c https://www.fossil-scm.org/index.html/uv/fossil-linux-x64-2.11.1.tar.gz
-          - name: 'Extract fossil'
-            run:  sudo tar zxvf fossil-linux-x64-2.11.1.tar.gz /fossil -C fossil
-          - name: 'Get AsmBB'
-            run:  ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
-          - name: Actions
-            run: |
-                  mkdir asmbb
-                  cd asmbb
-          - name: 'Open AsmBB repo'
-            run: ./fossil open asmbb.fossil
-          - name: 'git push'
-            run: |
-                  git add .
-                  git commit -m "update"
-                  git push origin master -f
+            run:  bash ./git.sh
+            shell: bash
 
