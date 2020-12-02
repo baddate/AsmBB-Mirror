@@ -19,6 +19,6 @@ jobs:
               echo -e "========================LS"
               chmod a+x ./fossil
               mkdir asmbb
-              ./fossil open https://asm32.info/fossil/repo/asmbb --repodir asmbb -f
+              ./fossil open https://asm32.info/fossil/repo/asmbb --repodir asmbb --workdir asmbb -f
 
             shell: bash
