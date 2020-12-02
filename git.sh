@@ -19,10 +19,10 @@ sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
 
 echo -e "========================MKDIR"
 mkdir asmbb
-cd asmbb
+
 echo -e `pwd`
 echo -e "========================OPEN FOSSIL"
-bash /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil open /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/asmbb.fossil
+./fossil open /home/runner/work/AsmBB-Mirror/AsmBB-Mirror/asmbb.fossil --workdir /asmbb
 # echo -e "========================GIT"
 # git add .
 # git commit -m "update"
