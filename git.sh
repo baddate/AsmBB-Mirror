@@ -27,7 +27,20 @@ ls -l
 echo -e "========================OPEN FOSSIL"
 ls -l
 # ./fossil open asmbb.fossil --workdir ./asmbb
-echo ".fossil\n fossil\n *.gz" > .gitignore
+echo -e ".fossil\n fossil\n *.gz" > .gitignore
+file="fossil"
+
+
+
+if [ ! -f "fossil" ]; then
+rm -f fossil
+elif [ ! -f "fossil-linux-x64-2.13.tar.gz" ]; then
+rm -f fossil-linux-x64-2.13.tar.gz
+elif [ ! -f "log.gz" ]; then
+rm -f log.gz
+elif [ ! -f "tar.log.gz" ]; then
+rm -f tar.log.gz
+fi
 
 cat .gitignore
 echo -e "========================LS"
