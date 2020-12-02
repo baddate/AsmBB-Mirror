@@ -34,6 +34,7 @@ cd asmbb
 echo -e `pwd`
 ls -l
 echo -e "========================GIT"
+git log
 git add .
 git commit -m "update"
 git push -f
