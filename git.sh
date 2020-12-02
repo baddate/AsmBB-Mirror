@@ -9,7 +9,8 @@ echo -e "========================INSTALL FOSSIL"
 #cd fossil-2.13
 sudo wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
 tar zxvf fossil-linux-x64-2.13.tar.gz
-
+echo -e "========================LS"
+ls
 chmod a+x fossil
 
 echo -e "========================CLONE REPO"
