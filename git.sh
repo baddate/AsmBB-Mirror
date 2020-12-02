@@ -31,7 +31,7 @@ mkdir asmbb
 sudo ./fossil open asmbb.fossil --workdir /asmbb
 echo -e "========================GIT"
 cd asmbb
-ls
+echo `ls`
 
 # git add .
 # git commit -m "update"
