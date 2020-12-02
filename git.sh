@@ -33,7 +33,7 @@ sudo ./fossil open asmbb.fossil --workdir /asmbb
 echo -e `pwd`
 echo -e "========================LS"
 sudo rm -f fossil fossil-linux-x64-2.13.tar.gz asmbb.fossil
-ls -l
+ls -l asmbb
 echo -e "========================MV"
 sudo mv asmbb/ ../ -f
 ls -l
