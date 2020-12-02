@@ -30,11 +30,10 @@ echo $PATH
 mkdir asmbb
 sudo ./fossil open asmbb.fossil --workdir /asmbb
 
-cd asmbb
 echo -e `pwd`
-ls -l
+echo `ls`
 echo -e "========================GIT"
 git log
-git add .
+git add asmbb/*
 git commit -m "update"
-git push -f
+git push
