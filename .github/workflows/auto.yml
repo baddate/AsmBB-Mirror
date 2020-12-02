@@ -23,7 +23,7 @@ jobs:
                   cd asmbb
           - name: 'Open AsmBB repo'
             run: ./fossil open asmbb.fossil
-
+          - name: 'git push'
             run: |
                   git add .
                   git commit -m "update"
