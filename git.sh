@@ -22,7 +22,7 @@ echo -e "========================MKDIR"
 # MY_VAR='/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil'
 # export MY_VAR
 
-echo -e `pwd`
+
 echo -e "========================OPEN FOSSIL"
 
 export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
@@ -31,7 +31,8 @@ mkdir asmbb
 sudo ./fossil open asmbb.fossil --workdir /asmbb
 echo -e "========================GIT"
 cd asmbb
-echo `ls`
+echo -e `pwd`
+echo -e `ls`
 
 # git add .
 # git commit -m "update"
