@@ -54,7 +54,7 @@ rm -f $f5
 else
 echo "===========NONE======="
 fi
-
+rm -f $f1 $f2 $f3 $f4 $f5
 cat .gitignore
 echo -e "========================LS"
 ls -a
