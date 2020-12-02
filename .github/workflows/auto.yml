@@ -25,5 +25,18 @@ jobs:
               # fossil open https://asm32.info/fossil/repo/asmbb --repodir ./asmbb
               # cd asmbb
               # ls -l
-              bash ./git.sh
+              # bash ./git.sh
+              wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
+              tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log.gz
+              echo -e "========================LS"
+              chmod a+x ./fossil
+              ./fossil open https://asm32.info/fossil/repo/asmbb
+              ls -l
+              ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log.gz
+              echo -e ".fossil\n fossil\n *.gz" > .gitignore
+              cat .gitignore
+              ls -a
+              git add .
+              git commit -m "update on `date`"
+              git push -f
             shell: bash
