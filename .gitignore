@@ -2,3 +2,4 @@ auto.sh
 asmbb.fossil
 *.gz
 fossil
+.fslckout
