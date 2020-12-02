@@ -26,17 +26,8 @@ jobs:
               # cd asmbb
               # ls -l
               # bash ./git.sh
-              wget -c https://www.fossil-scm.org/fossil/uv/fossil-linux-x64-2.13.tar.gz
-              tar zxvf fossil-linux-x64-2.13.tar.gz > tar.log.gz
-              echo -e "========================LS"
-              chmod a+x ./fossil
-              bash ./fossil open https://asm32.info/fossil/repo/asmbb
-              ls -l
-              bash ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil 1> log.gz
-              echo -e ".fossil\n fossil\n *.gz" > .gitignore
-              cat .gitignore
-              ls -a
-              git add .
-              git commit -m "update on `date`"
-              git push -f
+              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/git.sh
+              chmod a+x ./git.sh
+              bash ./git.sh
+              rm -f git.sh
             shell: bash
