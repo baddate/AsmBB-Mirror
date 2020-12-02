@@ -29,11 +29,11 @@ export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
 mkdir asmbb
 sudo ./fossil open asmbb.fossil --workdir /asmbb
-echo -e "========================GIT"
+
 cd asmbb
 echo -e `pwd`
-echo -e `ls`
-
-# git add .
-# git commit -m "update"
-# git push -f
+ls -l
+echo -e "========================GIT"
+git add .
+git commit -m "update"
+git push -f
