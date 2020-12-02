@@ -34,7 +34,7 @@ f3=log.gz
 f4=tar.log.gz
 f5=asmbb.fossil
 echo "============="
-echo (which $f1)
+which $f1
 echo "============="
 if [  -f "$f1" ]
 then
