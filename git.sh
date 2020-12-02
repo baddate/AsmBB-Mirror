@@ -18,17 +18,17 @@ echo -e "========================CLONE REPO"
 sudo ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
 
 echo -e "========================MKDIR"
-mkdir asmbb
+
 # MY_VAR='/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil'
 # export MY_VAR
 
-cd asmbb
 echo -e `pwd`
 echo -e "========================OPEN FOSSIL"
 
 export PATH=$PATH:/home/runner/work/AsmBB-Mirror/AsmBB-Mirror/fossil
 echo $PATH
-fossil open ../asmbb.fossil --workdir /asmbb
+mkdir asmbb
+sudo ./fossil open ../asmbb.fossil --workdir /asmbb
 # echo -e "========================GIT"
 # git add .
 # git commit -m "update"
