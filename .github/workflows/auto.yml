@@ -19,7 +19,8 @@ jobs:
               echo -e "========================LS"
               chmod a+x ./fossil
               mkdir asmbb
-              ./fossil clone --no-open https://asm32.info/fossil/repo/asmbb asmbb.fossil
+              ./fossil help clone
+              ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
               cd asmbb
               ../fossil open ../asmbb.fossil
               echo `ls`
