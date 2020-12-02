@@ -11,29 +11,23 @@ jobs:
         steps:
           - name: 'Checkout'
             uses: actions/checkout@v2
-          - name: 'git user'
-            uses: fregante/setup-git-user@v1
+          - name: 'Get fossil'
+            run:  sudo wget -c https://www.fossil-scm.org/index.html/uv/fossil-linux-x64-2.11.1.tar.gz
+          - name: 'Extract fossil'
+            run:  sudo tar zxvf fossil-linux-x64-2.11.1.tar.gz
+          - name: 'Get AsmBB'
+            run:  ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
+          - name: Actions
             run: |
-              git config --global user.email "badgatex@outlook.com"
-              git config --global user.name "baddate"
-            # echo "hi" > test.md
-            # git add .
-            # git commit --message 'test actions'
-            # git push
-          # - name: 'Get fossil'
-          #   run:  sudo wget -c https://www.fossil-scm.org/index.html/uv/fossil-linux-x64-2.11.1.tar.gz
-          # - name: 'Extract fossil'
-          #   run:  sudo tar zxvf fossil-linux-x64-2.11.1.tar.gz
-          # - name: 'Get AsmBB'
-          #   run:  ./fossil clone https://asm32.info/fossil/repo/asmbb asmbb.fossil
-          # - name: Actions
-          #   run: |
-          #         mkdir asmbb
-          #         cd asmbb
-          # - name: 'Open AsmBB repo'
-          #   uses: ./fossil open asmbb.fossil
-          # - name: git Actions
-          #   run: |
-          #         git add .
-          #         git commit -m "update"
-          #         git push origin master
+                  mkdir asmbb
+                  cd asmbb
+          - name: 'Open AsmBB repo'
+            run: ./fossil open asmbb.fossil
+          - name: git Actions
+            run: |
+                  git add .
+                  git commit -m "update"
+                  git push origin master
+            with:
+              repo-token: ${{ secrets.GITHUB_TOKEN }}
+
