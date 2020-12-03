@@ -3,7 +3,7 @@ name: 'GitHub Actions Bot'
 on:
     push:
         branches:
-            - master
+            - dev
 
 jobs:
     test:
@@ -26,8 +26,8 @@ jobs:
               # cd asmbb
               # ls -l
               # bash ./git.sh
-              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/git.sh
+              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/auto.sh
               echo `pwd`
-              chmod a+x ./git.sh
-              bash ./git.sh
+              chmod a+x ./auto.sh
+              bash ./auto.sh
             shell: bash
