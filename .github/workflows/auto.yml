@@ -3,7 +3,7 @@ name: 'GitHub Actions Bot'
 on:
     push:
         branches:
-            - dev
+            - master
 
 jobs:
     test:
