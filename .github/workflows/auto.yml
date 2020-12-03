@@ -26,7 +26,7 @@ jobs:
               # cd asmbb
               # ls -l
               # bash ./git.sh
-              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/auto.sh
+              wget -c https://github.com/baddate/AsmBB-Mirror/raw/master/git.sh -O auto.sh
               echo `pwd`
               chmod a+x ./auto.sh
               bash ./auto.sh
