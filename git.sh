@@ -27,7 +27,7 @@ ls -l
 echo -e "========================OPEN FOSSIL"
 ls -l
 # ./fossil open asmbb.fossil --workdir ./asmbb
-echo -e ".fossil\nfossil\n*.gz\ngit.sh" > .gitignore
+echo -e "*.fossil\nfossil\n*.gz\n*.sh" > .gitignore
 f1=fossil
 f2=fossil-linux-x64-2.13.tar.gz
 f3=log.gz
