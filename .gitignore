@@ -1,4 +1,4 @@
 .fossil
- fossil
- *.gz
- auto.sh
+fossil
+*.gz
+*.sh
