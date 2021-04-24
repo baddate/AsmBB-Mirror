@@ -34,7 +34,7 @@ jobs:
               bash ./auto.sh
             shell: bash
           - uses: fregante/setup-git-token@v1
-              with:
+            with:
                 token: ${{ secrets.TOKEN }}
           - run: git checkout dev
           - run: git push origin dev
